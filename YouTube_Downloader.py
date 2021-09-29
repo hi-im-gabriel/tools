@@ -9,14 +9,12 @@
 #d[key]=s[value]
 #d=dict(sorted(d.items(), key=lambda item: item[1]))
 from tkinter import *
-from tkinter import filedialog,messagebox
+from tkinter import filedialog,messagebox,Checkbutton,Pack,Tk
 import tkinter
 from tkinter.font import BOLD
 from PIL import Image, ImageTk
-import pytube
-
-cor = "#404040"#pretoclaro
- 
+from pytube import YouTube
+cor = "#FF7F50"#coral
 root = Tk()
 root.title("YouYube Downloader")
 root.resizable(False, False)
@@ -29,26 +27,28 @@ stringDiretorio =StringVar()
 url = str()
 caminho = str()
  
-def savevid():
+def salvar_arquivo():
     global caminho
     caminho = filedialog.askdirectory()
     stringDiretorio.set(caminho)
  
-def downvid():
+def baixa_video():
     global url
     try:
         url = stringURL.get()   
-        youtube = pytube.YouTube(url)   
-        video = youtube.streams.get_highest_resolution()    
-        video.download(caminho, youtube.title)
-        msg = f'''
-Titulo: {youtube.title}
-Duração: {youtube.length} segundos
-Canal: {youtube.author}
-Sucesso. Salvo em: {caminho}
-'''
+        youtube = YouTube(url)   
+        video = youtube.streams.get_highest_resolution()
+        try:
+            video.download(caminho, youtube.title)
+            try:
+                msg =f"Titulo: {youtube.title}\nCanal: {youtube.author}\n\nSucesso.\n\nSalvo em: {caminho}"
+            except:
+                msg="Erro desconhecido"
+        except:
+            msg="Caminho inválido"
     except:
         msg="URL Inválida"
+
     messagebox.showinfo("YouYube Downloader",msg)
  
 img = ImageTk.PhotoImage(Image.open("YouTube.ico"))
@@ -58,13 +58,13 @@ lb2 = Label(root, text="URL", bg=cor,font=BOLD).place(x=130, y=5)
 lb3 = Label(root, text="Diretório", bg=cor,font=BOLD).place(x=130, y=35)
 
 et1 = Entry(root, textvariable=stringURL, width=53).place(x=210, y=5)
-et2 = Entry(root, textvariable=stringDiretorio, width=53).place(x=210, y=35)
+et2 = Entry(root, textvariable=stringDiretorio, width=53,state=DISABLED).place(x=210, y=35)
 
-bt1 = Button(root, text="Onde salvar", width=20, command=savevid).place(x=210, y=65)
-bt2 = Button(root, text="Baixar vídeo", width=20, command=downvid).place(x=380, y=65)
- 
+bt1 = Button(root, text="SALVAR EM...", width=20, command=salvar_arquivo).place(x=315, y=70)#place(x=245, y=115)
+bt2 = Button(root, text="Baixar vídeo (.MP4)", width=20, command=baixa_video).place(x=415, y=115)
+bt3 = Button(root, text="Baixar áudio (.MP3)", width=20, command=baixa_video).place(x=215, y=115)
+
 root.mainloop()
-
 
 caramba='''def janelaip():
     def buscaip():
