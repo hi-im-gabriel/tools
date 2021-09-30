@@ -15,8 +15,10 @@ from tkinter.font import BOLD
 from PIL import Image, ImageTk
 from pytube import YouTube
 cor = "#FF7F50"#coral
+versao = "YouTube Downloader v0.2"
+
 root = Tk()
-root.title("YouYube Downloader")
+root.title(versao)
 root.resizable(False, False)
 
 root.geometry("660x150")
@@ -37,11 +39,11 @@ def baixa_video():
     try:
         url = stringURL.get()   
         youtube = YouTube(url)   
-        video = youtube.streams.get_highest_resolution()
+        video = youtube.streams.filter(progressive=True,file_extension="mp4").get_highest_resolution()
         try:
             video.download(caminho, youtube.title)
             try:
-                msg =f"Titulo: {youtube.title}\nCanal: {youtube.author}\n\nSucesso.\n\nSalvo em: {caminho}"
+                msg =f"Titulo: {youtube.title}\n\nCanal: {youtube.author}\n\nVídeo salvo em: \n{caminho}"
             except:
                 msg="Erro desconhecido"
         except:
@@ -49,8 +51,26 @@ def baixa_video():
     except:
         msg="URL Inválida"
 
-    messagebox.showinfo("YouYube Downloader",msg)
- 
+    messagebox.showinfo(versao,msg)
+
+def baixa_audio():
+    global url
+    try:
+        url = stringURL.get()   
+        youtube = YouTube(url)   
+        audio = youtube.streams.get_audio_only()
+        try:
+            audio.download(caminho, youtube.title+".mp3")
+            try:
+                msg =f"Titulo: {youtube.title}\n\nCanal: {youtube.author}\n\nÁudio salvo em: \n{caminho}"
+            except:
+                msg="Erro desconhecido"
+        except:
+            msg="Caminho inválido"
+    except:
+        msg="URL Inválida"
+
+    messagebox.showinfo(versao,msg)
 img = ImageTk.PhotoImage(Image.open("YouTube.ico"))
  
 lb1 = Label(root, image=img, bg=cor).pack(anchor=NW)
@@ -62,10 +82,11 @@ et2 = Entry(root, textvariable=stringDiretorio, width=53,state=DISABLED).place(x
 
 bt1 = Button(root, text="SALVAR EM...", width=20, command=salvar_arquivo).place(x=315, y=70)#place(x=245, y=115)
 bt2 = Button(root, text="Baixar vídeo (.MP4)", width=20, command=baixa_video).place(x=415, y=115)
-bt3 = Button(root, text="Baixar áudio (.MP3)", width=20, command=baixa_video).place(x=215, y=115)
+bt3 = Button(root, text="Baixar áudio (.MP3)", width=20, command=baixa_audio).place(x=215, y=115)
 
 root.mainloop()
 
+#https://www.youtube.com/watch?v=X478zOUdHdU
 caramba='''def janelaip():
     def buscaip():
         try:
