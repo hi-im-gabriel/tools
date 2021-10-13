@@ -1,6 +1,6 @@
  <h1 align="center">Tools v1.0</h1>
    <p align="center">
-    <a href="https://github.com/gabzin/tools/blob/master/LICENSE">
+    <a href="https://github.com/gabzin/tools/blob/master/license">
       <img src="https://img.shields.io/badge/license-MIT-blue.svg" />
     </a>
     <a href="https://www.python.org/">
