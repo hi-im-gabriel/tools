@@ -72,9 +72,12 @@ def wid():
             final_ip.tag_configure('curr',foreground='blue')
             final_ip.tag_add('currcode','19.0','19.4')
             final_ip.tag_configure('currcode',foreground='blue')
+        label_ip.focus()
+
     def close_ip():
         root_ip.quit()
         root_ip.destroy()
+
 
     class EntryWithPlaceholder(Entry):
         def __init__(self, *args, **kwargs):
@@ -93,17 +96,21 @@ def wid():
             if self.placeholder and self.get() == "":
                 self.insert(0, self.placeholder)
                 self.config(fg='grey')
-    
-    img_icone = ImageTk.PhotoImage(Image.open(getcwd()+"/data/icons/ip.ico"))
-    label_icone = Label(root_ip, image=img_icone, bg=color).pack(anchor=NW)
+
+
+    img_ip = ImageTk.PhotoImage(Image.open(getcwd()+"/data/icons/ip.ico"))
+    label_img_ip = Label(root_ip, image=img_ip, bg=color)
+    label_img_ip.place(x=0,y=0)
 
     label_ip = EntryWithPlaceholder(root_ip, width=15,fg='grey',placeholder="142.250.219.132")
     label_ip.place(x=145, y=100)
+    label_ip.focus()
 
     button_ip = Button(root_ip, text="Search", width=5, command=search_ip,highlightthickness=0,border=0)
     button_ip.place(x=295, y=96)
 
     final_ip = Text(root_ip, width=43,height=20,state=DISABLED)
     final_ip.place(x=25,y=160)
+
     root_ip.protocol("WM_DELETE_WINDOW",lambda: close_ip())
     root_ip.mainloop()

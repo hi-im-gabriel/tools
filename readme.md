@@ -1,4 +1,4 @@
- <h1 align="center">Tools v0.3</h1>
+ <h1 align="center">Tools v1.0</h1>
    <p align="center">
     <a href="https://github.com/gabzin/tools/blob/master/LICENSE">
       <img src="https://img.shields.io/badge/license-MIT-blue.svg" />
@@ -9,13 +9,16 @@
 	<p align="center">⭐️ Star this project ⭐️</p>
   </p>
 <p align="center">
-  <img src="https://i.imgur.com/iKbxOsn.png" width="50%">
+  <img src="https://i.imgur.com/WBPDVBo.png" width="50%">
 </p>
 <p align="center">
-  <img src="https://i.imgur.com/m1kPnYz.png" width="100%">
+  <img src="https://i.imgur.com/axrSEQD.png" width="100%">
 </p>
 <p align="center">
-  <img src="https://i.imgur.com/7B8RSfu.png" width="70%">
+  <img src="https://i.imgur.com/bSsshjw.png" width="50%">
+</p>
+<p align="center">
+  <img src="https://i.imgur.com/oxcRS18.png" width="80%">
 </p>
 
 # Install [en-US]
@@ -26,10 +29,10 @@ Go to the project directory:
 ``cd tools``
 
 Install the requirements:
-``pip install -r requirements.txt``
+``pip3 install -r requirements.txt`` or ``pip install -r requirements.txt``
 
 Run:
-``python main.py``
+``python3 main.py`` or ``python main.py``
 
 # Instalação [pt-BR]
 Clone ou baixe o repositório:
@@ -39,12 +42,20 @@ Abra a pasta:
 ``cd tools``
 
 Instale os pacotes necessários:
-``pip install -r requirements.txt``
+``pip3 install -r requirements.txt`` ou ``pip install -r requirements.txt``
 
 Execute:
-``python main.py``
+``python3 main.py`` ou ``python main.py``
 
-> ## v0.3.0 (04/10/2021)
+> # v1.0 (13/10/2021)
+> 
+> #### Added:
+> 
+> - Phone Specs by model name (API: https://github.com/azharimm/phone-specs-api)
+> - Visual enhancement
+> - IP focus fix
+>
+> # v0.3.0 (04/10/2021)
 > 
 > #### Added:
 > 
@@ -52,7 +63,3 @@ Execute:
 > - A all in one menu
 > - Visual enhancement
 > - A progress bar for YouTube Downloader
-> 
-> #### Bug Fixes:
-> 
-> - None

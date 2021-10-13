@@ -1,2 +1,3 @@
 pytube>=11.0.1
 requests>=2.26.0
+Pillow>=8.1.2
