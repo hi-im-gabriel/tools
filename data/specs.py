@@ -37,7 +37,7 @@ def wid():
         button_specs.place_forget()
         button_specs.update()
         if model=="Enter a model, ex: iPhone 13" or len(model)<=5:entry_ph.config(state=NORMAL);entry_ph.update();entry_ph.focus();messagebox.showerror(version,"Enter at least 6 characters!");return
-        try:s=get("https://api-mobilespecs.azharimm.site/v2/search?query="+model).json()
+        try:s=get("https://phone-specs-api.azharimm.dev/search?query="+model).json()
         except:entry_ph.config(state=NORMAL);entry_ph.update();entry_ph.focus();messagebox.showerror(version,"API Error, try again later.");return
         s=s['data']['phones']
         if not bool(s):entry_ph.config(state=NORMAL);entry_ph.update();entry_ph.focus();messagebox.showerror(version,f"0 models found named\n'{model}'");return
